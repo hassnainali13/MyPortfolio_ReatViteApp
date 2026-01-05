@@ -1,7 +1,7 @@
 // import React from "react";
 import { motion } from "framer-motion";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import AboutImage from "../assets/Profile/About_Hassnain.jpeg";
+import AboutImage from "../assets/profile/about_hassnain.jpeg";
 
 const About = () => {
   return (

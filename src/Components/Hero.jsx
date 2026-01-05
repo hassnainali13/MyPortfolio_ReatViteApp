@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import profileImg from "src/assets/Profile/Hassnain_Profile.jpeg";
+import profileImg from "../assets/profile/hassnain_profile.jpeg";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
