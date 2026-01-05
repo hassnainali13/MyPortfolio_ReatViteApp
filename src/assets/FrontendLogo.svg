@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <!-- Purple stroke, transparent background -->
+  <g stroke="#8D25EE" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Browser/window frame -->
+    <rect x="32" y="32" width="192" height="192" rx="24"></rect>
+    <!-- Top bar separator -->
+    <line x1="32" y1="80" x2="224" y2="80"></line>
+
+    <!-- Left chevron < -->
+    <path d="M108 120 L80 144 L108 168"></path>
+
+    <!-- Slash / -->
+    <path d="M128 116 L128 172"></path>
+
+    <!-- Right chevron > -->
+    <path d="M148 120 L176 144 L148 168"></path>
+  </g>
+</svg>
