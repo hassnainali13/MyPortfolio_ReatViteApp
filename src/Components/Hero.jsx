@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import profileImg from "../assets/profile/hassnain_profile.jpeg";
+// import profileImg from "../profile/hassnain_profile.jpeg";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,7 +70,7 @@ const Hero = () => {
         >
           <div className="flex h-[280px] w-[280px] items-center justify-center rounded-full border-b-4 border-[#8d25ee] p-3 sm:h-[360px] sm:w-[360px] lg:h-[440px] lg:w-[440px]">
             <img
-              src={profileImg}
+              src="/profile/hassnain_profile.jpeg"
               alt="profile"
               className="h-full w-full rounded-full object-cover ring-2 ring-slate-200/70"
             />
