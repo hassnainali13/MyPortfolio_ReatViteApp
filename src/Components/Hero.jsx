@@ -49,17 +49,11 @@ const Hero = () => {
           </p>
 
           <div className="btn">
-            <a
-              href="#projects"
-              className="btn-Background"
-            >
+            <a href="#projects" className="btn-Background">
               View My Work
             </a>
 
-            <a
-              href="#contact"
-              className="btn-Border"
-            >
+            <a href="#contact" className="btn-Border">
               Contact
             </a>
           </div>

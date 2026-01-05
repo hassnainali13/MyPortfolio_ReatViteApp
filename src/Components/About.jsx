@@ -4,7 +4,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const About = () => {
   return (
-    <section id="home" className="bg-[#152541] text-white py-16">
+    <section id="about" className="bg-[#152541]  text-white py-16">
       <div className="mx-auto max-w-6xl px-5">
         {/* Top heading */}
         <motion.div

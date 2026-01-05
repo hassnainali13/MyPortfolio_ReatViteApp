@@ -6,7 +6,10 @@ import { projectsData } from "../data/projectsData";
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-[#152541] text-white py-16">
+    <section
+      id="projects"
+      className="bg-[#152541] text-white py-16"
+    >
       <div className="mx-auto max-w-6xl px-5">
         {/* Top heading */}
         <motion.div

@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-/* Agar Tailwind me nahi to simple CSS bhi chal jata hai */
 .tag {
-  /* @apply text-slate-400 pb-1 rounded-full border border-slate-600 h-7 flex items-center justify-center; */
   @apply text-slate-400 text-sm border border-slate-600 rounded-full px-2 py-1 inline-block;
 }
 
