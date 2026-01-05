@@ -4,6 +4,7 @@ import About from "../Components/About.jsx";
 import Skills from "../Components/Skills.jsx";
 import Project from "../Components/Project.jsx";
 
+
 const Home = () => {
   return (
     <div>

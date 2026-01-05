@@ -36,7 +36,7 @@ const Skills = () => {
             <h3 className="text-xl font-semibold text-white mb-5 ">
               Frontend Development
             </h3>
-            <p className="text-slate-300 leading-relaxed">
+            <p className="P-Card">
               I build responsive and clean user interfaces using HTML, CSS,
               JavaScript, and React.js. I focus on reusable components and
               simple UI logic.
@@ -70,7 +70,7 @@ const Skills = () => {
               Backend & Programming
             </h3>
 
-            <p className="text-slate-300 leading-relaxed text-justify">
+            <p className="P-Card">
               I have basic experience with backend development using Node.js,
               Express.js, and ASP.NET MVC. I work with SQL Server for data
               handling.
@@ -103,7 +103,7 @@ const Skills = () => {
             <h3 className="text-xl font-semibold text-white  mb-5 ">
               Databases
             </h3>
-            <p className="text-slate-300 leading-relaxed">
+            <p className="P-Card">
               I use SQL Server and MongoDB to store and manage application data.
               I understand basic CRUD operations and database structure.
             </p>
@@ -127,7 +127,7 @@ const Skills = () => {
               Software Testing (SQA)
             </h3>
 
-            <p className="text-slate-300 leading-relaxed text-justify">
+            <p className="P-Card mb-4 flex-grow">
               I perform manual testing and write test cases to ensure software
               quality. I also have basic exposure to automated testing and
               CI/CD.
@@ -161,7 +161,7 @@ const Skills = () => {
               Tailwind CSS
             </h3>
 
-            <p className="text-slate-300 leading-relaxed text-justify">
+            <p className="P-Card">
               I use Tailwind CSS to design modern and responsive layouts
               efficiently. I work with utility classes, Flexbox, and basic
               layout structure.

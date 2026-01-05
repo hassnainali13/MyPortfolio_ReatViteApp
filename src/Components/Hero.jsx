@@ -48,17 +48,17 @@ const Hero = () => {
             solve real-world problems. Let's build something amazing together!
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+          <div className="btn">
             <a
               href="#projects"
-              className="rounded-md bg-[#8d25ee] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#6a1d99]"
+              className="btn-Background"
             >
               View My Work
             </a>
 
             <a
               href="#contact"
-              className="rounded-md border-2 border-[#8d25ee] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#6a1d99]"
+              className="btn-Border"
             >
               Contact
             </a>

@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+/* Agar Tailwind me nahi to simple CSS bhi chal jata hai */
+.tag {
+  /* @apply text-slate-400 pb-1 rounded-full border border-slate-600 h-7 flex items-center justify-center; */
+  @apply text-slate-400 text-sm border border-slate-600 rounded-full px-2 py-1 inline-block;
+}
+
+.Project-Card {
+  @apply max-w-6xl mx-auto px-6 grid gap-8 md:grid-cols-3;
+}
+
+.Card {
+  @apply bg-slate-900/70  border border-slate-700 rounded-2xl overflow-hidden backdrop-blur hover:border-blue-500 transition;
+}
+.btn {
+  @apply mt-8 flex flex-wrap justify-center gap-4 lg:justify-start;
+}
+
+.btn-Background {
+  @apply rounded-md bg-[#8d25ee] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#6a1d99];
+}
+.btn-Border {
+  @apply rounded-md border-2 border-[#8d25ee] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#6a1d99];
+}
+.P-Card {
+  @apply text-slate-300 leading-relaxed text-justify mb-4 flex-grow;
+}
+
+.h3-Card {
+  @apply text-xl font-semibold text-white mb-5;
+}
