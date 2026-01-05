@@ -69,7 +69,7 @@ const Hero = () => {
         >
           <div className="flex h-[280px] w-[280px] items-center justify-center rounded-full border-b-4 border-[#8d25ee] p-3 sm:h-[360px] sm:w-[360px] lg:h-[440px] lg:w-[440px]">
             <img
-              src="src/image/Hassnain Ali Profile.jpeg"
+              src="src/assets/Profile/Hassnain Ali Profile.jpeg"
               alt="Hassnain Ali"
               className="h-full w-full rounded-full object-cover ring-2 ring-slate-200/70"
             />
