@@ -1,7 +1,7 @@
 // import React from "react";
 import { motion } from "framer-motion";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import AboutImage from "../assets/profile/about_hassnain.jpeg";
+import aboutimage from "../assets/profile/about_hassnain.jpeg";
 
 const About = () => {
   return (
@@ -36,7 +36,7 @@ const About = () => {
           >
             <div className="relative overflow-hidden ml-20 bg-slate-200 rounded-tr-2xl rounded-br-2xl rounded-tl-2xl rounded-bl-[180px] border-b-8 border-[#8d25ee] shadow-lg">
               <img
-                src={AboutImage}
+                src={aboutimage}
                 alt="Hassnain"
                 className="h-125 w-full object-cover"
               />
