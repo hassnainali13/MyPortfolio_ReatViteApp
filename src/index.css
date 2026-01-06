@@ -1,11 +1,41 @@
 @import "tailwindcss";
 
+.section-dark {
+  @apply bg-linear-to-b from-slate-900 to-slate-950 py-24  text-white py-16;
+}
+.section-light {
+  @apply bg-[#152541]  text-white py-16;
+}
+
+.first-div-for-item-center {
+  @apply mx-auto max-w-6xl px-5;
+}
+.top-heading {
+  @apply text-4xl font-bold text-white mb-4;
+}
+
+.top-p {
+  @apply mb-9 text-slate-300;
+}
+
+.tag-div {
+  @apply flex flex-wrap gap-2 mb-4;
+}
 .tag {
   @apply text-slate-400 text-sm border border-slate-600 rounded-full px-2 py-1 inline-block;
 }
+.skills-Card-Grid {
+  @apply max-w-6xl mx-auto px-6 grid gap-8 md:grid-cols-3;
+}
+.skill-Cards {
+  @apply bg-slate-900/70 border border-slate-700 rounded-2xl p-6 backdrop-blur hover:border-blue-500 transition;
+}
+.skills-Logo {
+  @apply w-10 h-8.5 float-left mr-2;
+}
 
 .Project-Card {
-  @apply max-w-6xl mx-auto px-6 grid gap-8 md:grid-cols-3;
+  @apply max-w-6xl mx-auto px-6 grid gap-8 md:grid-cols-3 mb-12;
 }
 
 .Card {
@@ -27,4 +57,13 @@
 
 .h3-Card {
   @apply text-xl font-semibold text-white mb-5;
+}
+
+.MoreView-btn {
+  @apply px-8 py-3 rounded-full border border-purple-500 text-purple-400 items-center
+                       hover:bg-purple-500 hover:text-white transition duration-300;
+}
+
+.exp-grid {
+  @apply max-w-6xl mx-auto px-6 grid gap-8 grid-cols-1;
 }

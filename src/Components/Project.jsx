@@ -1,52 +1,65 @@
 // src/components/Projects.jsx
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { projectsData } from "../data/projectsData";
 
 const Projects = () => {
+  {
+    /* Hooks */
+  }
+  const [showAll, setShowAll] = useState(false);
+  const [noMore, setNoMore] = useState(false);
+
+  const visibleProjects = showAll ? projectsData : projectsData.slice(0, 3);
+
+  const handleViewMore = () => {
+    if (projectsData.length <= 3) {
+      setNoMore(true);
+      return;
+    }
+    setShowAll(!showAll);
+    setNoMore(true);
+  };
+
   return (
-    <section
-      id="projects"
-      className="bg-[#152541] text-white py-16"
-    >
-      <div className="mx-auto max-w-6xl px-5">
-        {/* Top heading */}
+    <section id="projects" className="section-light">
+      <div className="first-div-for-item-center">
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h2 className="top-heading">
             My <span className="text-purple-500">Projects</span>
           </h2>
-          <p className="text-slate-300">A section of my recent work</p>
+          <p className="top-p">A section of my recent work</p>
         </motion.div>
 
-        {/* Project cards */}
-        <div className="Project-Card mb-12">
-          {projectsData.map((project) => (
+        {/* Project Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {visibleProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
-        {/* More Projects Button */}
+        {/* View More Button + Message */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="flex justify-center"
+          className="flex flex-col items-center mt-12"
         >
-          <a
-            href="https://github.com/hassnainali13?tab=repositories"
-            target="_blank"
-            className="px-8 py-3 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition duration-300"
-          >
-            More Projects
-          </a>
+          <button onClick={handleViewMore} className="MoreView-btn">
+            {showAll ? "Show Less" : "View More Projects"}
+          </button>
+
+          {/* Message */}
+          {noMore && <p className="p-Card">No more projects available</p>}
         </motion.div>
       </div>
     </section>

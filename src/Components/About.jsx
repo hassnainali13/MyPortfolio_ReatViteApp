@@ -5,8 +5,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#152541]  text-white py-16">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="about" className="section-light">
+      <div className="first-div-for-item-center">
         {/* Top heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -15,11 +15,11 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl font-extrabold tracking-tight mb-6">
+          <h2 className="top-heading">
             <span className="text-[#8d25ee]">About</span>{" "}
             <span className="text-slate-200">Me</span>
           </h2>
-          <p className="mb-9 text-slate-300">
+          <p className="top-p">
             Full Stack Developer skilled in React, Node.js, MongoDB.
           </p>
         </motion.div>
