@@ -1,42 +1,42 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import {
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaPhone,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const form = useRef();
   const [buttonState, setButtonState] = useState("idle"); // idle, sending, success
 
-  const sendEmail = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
     setButtonState("sending");
 
-    const formData = {
-      user_name: form.current.user_name.value,
-      user_email: form.current.user_email.value,
-      message: form.current.message.value,
-    };
-
-    try {
-      const res = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        setButtonState("success");
-        e.target.reset();
-        setTimeout(() => setButtonState("idle"), 3000);
-      } else {
-        setButtonState("idle");
-        alert("Failed to send message, try again.");
-      }
-    } catch (err) {
-      console.error(err);
-      setButtonState("idle");
-      alert("Failed to send message, try again.");
-    }
+    emailjs
+      .sendForm(
+        "service_xxdzz0d", // your service ID
+        "template_fe159ra", // your template ID
+        form.current,
+        "YEs619UthrCPevLzj" // your public key
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text);
+          setButtonState("success");
+          e.target.reset();
+          setTimeout(() => setButtonState("idle"), 3000);
+        },
+        (error) => {
+          console.error("Failed to send email:", error);
+          setButtonState("idle");
+          alert("Failed to send message, try again.");
+        }
+      );
   };
 
   const renderButtonContent = () => {
@@ -46,7 +46,7 @@ const Contact = () => {
       case "success":
         return (
           <span className="flex items-center gap-2">
-            <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
+            <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center animate-bounce">
               <svg
                 className="w-3 h-3 text-purple-600"
                 fill="none"
@@ -54,7 +54,11 @@ const Contact = () => {
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
             </span>
             Sent!
@@ -66,7 +70,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-gradient-to-b from-[#152541] to-slate-950 p-16">
+    <section
+      id="contact"
+      className="bg-gradient-to-b from-[#152541] to-slate-950 p-16"
+    >
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -83,34 +90,37 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="Contect-grid flex flex-col md:flex-row justify-between gap-10">
+        <div className="flex flex-col md:flex-row justify-between gap-10">
           {/* Left Side - Form */}
-          <div className="Messages-side flex-1">
-            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
+          <div className="flex-1">
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="flex flex-col gap-4"
+            >
               <input
                 type="text"
-                name="user_name"
+                name="name"
                 placeholder="Your Name"
-                className="w-full bg-gray-800 text-white p-3 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="input-Box"
                 required
               />
               <input
                 type="email"
-                name="user_email"
+                name="from_email"
                 placeholder="Email Address"
-                className="w-full bg-gray-800 text-white p-3 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="input-Box"
                 required
               />
               <textarea
                 name="message"
                 placeholder="Your Message"
-                className="w-full bg-gray-800 text-white p-3 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600 h-32 resize-none"
+                className="input-Box h-32 resize-none"
                 required
-              ></textarea>
-
+              />
               <button
                 type="submit"
-                className={`btn-Background text-center p-3 rounded-md transition text-white font-semibold flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700`}
+                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold p-3 rounded-md flex items-center justify-center gap-2 transition"
               >
                 {renderButtonContent()}
               </button>
@@ -118,7 +128,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side - Contact Details */}
-          <div className="contactDetail-side flex-1 flex flex-col justify-start gap-6 text-white">
+          <div className="flex-1 flex flex-col justify-start gap-6 text-white">
             <div className="flex items-center gap-3">
               <FaMapMarkerAlt className="text-purple-600" />
               <div>
