@@ -1,46 +1,44 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
-import {
-  FaMapMarkerAlt,
-  FaEnvelope,
-  FaPhone,
-  FaLinkedin,
-  FaGithub,
-} from "react-icons/fa";
 
 const Contact = () => {
   const form = useRef();
   const [buttonState, setButtonState] = useState("idle"); // idle, sending, success
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setButtonState("sending");
 
-    emailjs
-      .sendForm(
-        "service_xxdzz0d", 
-        "template_fe159ra", 
-        form.current,
-        "YEs619UthrCPevLzj"
-      )
-      .then(
-        (result) => {
-          console.log("Email sent:", result.text);
-          setButtonState("success");
-          e.target.reset();
+    const formData = {
+      user_name: form.current.user_name.value,
+      user_email: form.current.user_email.value,
+      message: form.current.message.value,
+    };
 
-          setTimeout(() => setButtonState("idle"), 3000); // reset button after 3 sec
-        },
-        (error) => {
-          console.log("Failed to send email:", error);
-          setButtonState("idle");
-          alert("Failed to send message, try again.");
-        }
-      );
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setButtonState("success");
+        e.target.reset();
+        setTimeout(() => setButtonState("idle"), 3000);
+      } else {
+        setButtonState("idle");
+        alert("Failed to send message, try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setButtonState("idle");
+      alert("Failed to send message, try again.");
+    }
   };
 
-  // Button text based on state
   const renderButtonContent = () => {
     switch (buttonState) {
       case "sending":
@@ -48,19 +46,15 @@ const Contact = () => {
       case "success":
         return (
           <span className="flex items-center gap-2">
-            <span className="w-5 h-5 rounded-full bg-purple-600 flex items-center justify-center">
+            <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
               <svg
-                className="w-3 h-3 text-white"
+                className="w-3 h-3 text-purple-600"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </span>
             Sent!
@@ -72,10 +66,7 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="bg-gradient-to-b from-[#152541] to-slate-950 p-21"
-    >
+    <section id="contact" className="bg-gradient-to-b from-[#152541] to-slate-950 p-16">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -95,37 +86,31 @@ const Contact = () => {
         <div className="Contect-grid flex flex-col md:flex-row justify-between gap-10">
           {/* Left Side - Form */}
           <div className="Messages-side flex-1">
-            <form
-              ref={form}
-              onSubmit={sendEmail}
-              className="flex flex-col gap-4"
-            >
+            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
               <input
                 type="text"
                 name="user_name"
                 placeholder="Your Name"
                 className="w-full bg-gray-800 text-white p-3 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                required
               />
               <input
                 type="email"
                 name="user_email"
                 placeholder="Email Address"
                 className="w-full bg-gray-800 text-white p-3 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                required
               />
               <textarea
                 name="message"
                 placeholder="Your Message"
                 className="w-full bg-gray-800 text-white p-3 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600 h-32 resize-none"
+                required
               ></textarea>
 
               <button
                 type="submit"
-                className={`btn-Background text-center p-3 rounded-md transition text-white font-semibold flex items-center justify-center gap-2
-                ${
-                  buttonState === "success"
-                    ? "bg-purple-600 hover:bg-purple-700"
-                    : "bg-purple-600 hover:bg-purple-700"
-                }`}
+                className={`btn-Background text-center p-3 rounded-md transition text-white font-semibold flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700`}
               >
                 {renderButtonContent()}
               </button>
