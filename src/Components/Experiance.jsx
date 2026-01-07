@@ -24,8 +24,8 @@ const Experiance = () => {
   };
 
   return (
-    <section id="experience" className="section-dark">
-      <div className="first-div">
+    <section id="experience" className="section-dark bg-linear">
+      <div className="first-div-for-item-center">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}

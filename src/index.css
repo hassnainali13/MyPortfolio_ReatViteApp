@@ -4,7 +4,7 @@
   @apply bg-linear-to-b from-slate-900 to-slate-950 py-24  text-white py-16;
 }
 .section-light {
-  @apply bg-[#152541]  text-white py-16;
+  @apply bg-[#152541] text-white py-16;
 }
 
 .first-div-for-item-center {
@@ -31,7 +31,14 @@
   @apply bg-slate-900/70 border border-slate-700 rounded-2xl p-6 backdrop-blur hover:border-blue-500 transition;
 }
 .skills-Logo {
-  @apply w-10 h-8.5 float-left mr-2;
+  @apply w-9 h-9 object-contain;
+}
+.skills-h3-grid {
+  @apply flex items-center gap-[4px] mb-3;
+}
+
+.Skill-card-h3 {
+  @apply text-xl font-semibold text-white;
 }
 
 .Project-Card {
@@ -60,7 +67,7 @@
 }
 
 .MoreView-btn {
-  @apply px-8 py-3 rounded-full border border-purple-500 text-purple-400 items-center
+  @apply px-8 py-3 rounded-full border border-purple-500 text-purple-400
                        hover:bg-purple-500 hover:text-white transition duration-300;
 }
 
