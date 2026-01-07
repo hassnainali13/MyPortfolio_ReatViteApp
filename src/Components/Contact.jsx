@@ -107,7 +107,7 @@ const Contact = () => {
               />
               <input
                 type="email"
-                name="from_email"
+                name="email"
                 placeholder="Email Address"
                 className="input-Box"
                 required
