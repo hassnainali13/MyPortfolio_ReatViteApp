@@ -7,66 +7,58 @@ import {
   FaLinkedin,
   FaGithub,
 } from "react-icons/fa";
-import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const form = useRef();
-  const [buttonState, setButtonState] = useState("idle"); // idle, sending, success
+  const [buttonState, setButtonState] = useState("idle"); // idle | sending | success
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setButtonState("sending");
 
-    emailjs
-      .sendForm(
-        "service_xxdzz0d", // your service ID
-        "template_fe159ra", // your template ID
-        form.current,
-        "YEs619UthrCPevLzj" // your public key
-      )
-      .then(
-        (result) => {
-          console.log("Email sent:", result.text);
-          setButtonState("success");
-          e.target.reset();
-          setTimeout(() => setButtonState("idle"), 3000);
+    const formData = new FormData(form.current);
+
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          console.error("Failed to send email:", error);
-          setButtonState("idle");
-          alert("Failed to send message, try again.");
-        }
-      );
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+
+      setButtonState("success");
+      form.current.reset();
+
+      setTimeout(() => setButtonState("idle"), 3000);
+    } catch (error) {
+      console.error(error);
+      setButtonState("idle");
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   const renderButtonContent = () => {
-    switch (buttonState) {
-      case "sending":
-        return "Sending...";
-      case "success":
-        return (
-          <span className="flex items-center gap-2">
-            <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center animate-bounce">
-              <svg
-                className="w-3 h-3 text-purple-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </span>
-            Sent!
+    if (buttonState === "sending") return "Sending...";
+    if (buttonState === "success") {
+      return (
+        <span className="flex items-center gap-2">
+          <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
+            ✓
           </span>
-        );
-      default:
-        return "Send message";
+          Sent!
+        </span>
+      );
     }
+    return "Send message";
   };
 
   return (
@@ -90,8 +82,8 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row justify-between gap-10">
-          {/* Left Side - Form */}
+        <div className="flex flex-col md:flex-row gap-10">
+          {/* Form */}
           <div className="flex-1">
             <form
               ref={form}
@@ -120,56 +112,43 @@ const Contact = () => {
               />
               <button
                 type="submit"
-                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold p-3 rounded-md flex items-center justify-center gap-2 transition"
+                disabled={buttonState === "sending"}
+                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold p-3 rounded-md transition"
               >
                 {renderButtonContent()}
               </button>
             </form>
           </div>
 
-          {/* Right Side - Contact Details */}
-          <div className="flex-1 flex flex-col justify-start gap-6 text-white">
+          {/* Info */}
+          <div className="flex-1 flex flex-col gap-6 text-white">
             <div className="flex items-center gap-3">
               <FaMapMarkerAlt className="text-purple-600" />
-              <div>
-                <p className="font-semibold">Location</p>
-                <p className="text-gray-400">Malir, Karachi, Pakistan</p>
-              </div>
+              <p className="text-gray-400">Malir, Karachi, Pakistan</p>
             </div>
             <div className="flex items-center gap-3">
               <FaEnvelope className="text-purple-600" />
-              <div>
-                <p className="font-semibold">Email</p>
-                <p className="text-gray-400">hassnainali96788@gmail.com</p>
-              </div>
+              <p className="text-gray-400">hassnainali96788@gmail.com</p>
             </div>
             <div className="flex items-center gap-3">
               <FaPhone className="text-purple-600" />
-              <div>
-                <p className="font-semibold">Phone</p>
-                <p className="text-gray-400">+92 (320) 121-9245</p>
-              </div>
+              <p className="text-gray-400">+92 320 1219245</p>
             </div>
-            <div className="mt-6">
-              <p className="font-semibold mb-2">Follow Me</p>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.linkedin.com/in/hassnain-ali-52ba09295/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-blue-600 transition text-2xl"
-                >
-                  <FaLinkedin />
-                </a>
-                <a
-                  href="https://github.com/hassnainali13"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-200 transition text-2xl"
-                >
-                  <FaGithub />
-                </a>
-              </div>
+            <div className="flex gap-4 mt-4 text-2xl">
+              <a
+                href="https://www.linkedin.com/in/hassnain-ali-52ba09295/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="https://github.com/hassnainali13"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaGithub />
+              </a>
             </div>
           </div>
         </div>
