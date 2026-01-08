@@ -128,7 +128,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={buttonState === "sending"}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold p-3 rounded-md transition"
+                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold p-3 rounded-md transition flex items-center justify-center"
               >
                 {renderButtonContent()}
               </button>
