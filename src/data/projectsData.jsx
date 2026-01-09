@@ -11,8 +11,8 @@ export const projectsData = [
     description:
       "This repository contains a MERN stack application with Node.js backend and React frontend. It supports CRUD operations for products.",
     tags: ["React", "Node js", "MongoDB", "Express js"],
-    demoLink: "#",
-    codeLink: "https://github.com/hassnainali13/React-Implement.git",
+    demoLink: "https://product-crud-app1.vercel.app/",
+    codeLink: "https://github.com/hassnainali13/product-crud-app1.git",
   },
   {
     id: 2,
@@ -30,12 +30,12 @@ export const projectsData = [
     image: Bus_ticket,
     title: "Bus-ticket-Management-System",
     description:
-"Bus Ticket Management System with OOP concepts, seat booking, route management, and user-friendly interface developed as a 2-semester university project.",
-    tags: ["C++ Programing","OPPs"],
+      "Bus Ticket Management System with OOP concepts, seat booking, route management, and user-friendly interface developed as a 2-semester university project.",
+    tags: ["C++ Programing", "OPPs"],
     demoLink: "#",
-    codeLink: "https://github.com/hassnainali13/Bus-ticket-Management-System-Project.git",
+    codeLink:
+      "https://github.com/hassnainali13/Bus-ticket-Management-System-Project.git",
   },
-  
 
   // Aap aur projects bhi add kar sakte ho
 ];
