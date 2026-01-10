@@ -6,6 +6,7 @@ import Project from "../Components/Project.jsx";
 import Experiance from "../Components/Experiance.jsx";
 import Contact from "../Components/Contact.jsx";
 import Footer from "../Components/Footer.jsx";
+import FloatingBot from "../Components/FloatingBot";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Experiance />
       <Contact />
       <Footer/>
+      <FloatingBot />
     </div>
   );
 };
