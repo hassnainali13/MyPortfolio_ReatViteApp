@@ -59,7 +59,6 @@ const Projects = () => {
           </button>
 
           {/* Message */}
-          {noMore && <p className="p-Card">No more projects available</p>}
         </motion.div>
       </div>
     </section>
